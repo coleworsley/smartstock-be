@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 app.use('/api', router);
 app.set('secretKey', process.env.SECRET_KEY);
 
-// console.log(process.env.BARCHARTS_API_KEY);
 axios.get('https://marketdata.websol.barchart.com/getQuote.json', {
   params: {
     apikey: process.env.BARCHARTS_API_KEY,
