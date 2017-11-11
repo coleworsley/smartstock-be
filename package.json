@@ -7,7 +7,7 @@
     "node": "6.11.x"
   },
   "scripts": {
-    "start": "node server",
+    "start": "node index.js",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha ./server/tests/*"
   },
   "dependencies": {
