@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 const environment = process.env.NODE_ENV || 'development';
-const configuration = require('../knexfile')[environment];
+const configuration = require('./knexfile')[environment];
 const db = require('knex')(configuration);
 
 app.use(bodyParser.json());
