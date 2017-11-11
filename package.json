@@ -11,6 +11,7 @@
     "test": "NODE_ENV=test ./node_modules/.bin/mocha ./server/tests/*"
   },
   "dependencies": {
+    "axios": "^0.17.0",
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",
     "express": "^4.14.1",

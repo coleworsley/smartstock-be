@@ -1,21 +1,34 @@
 const express = require('express');
-const app = express();
-const router = require('./router');
 const path = require('path');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+const https = require('https');
+const axios = require('axios');
+const router = require('./router');
+const app = express();
 const PORT = process.env.PORT || 5000;
-const environment = process.env.NODE_ENV || 'development';
-const configuration = require('./knexfile')[environment];
-const db = require('knex')(configuration);
+const db = require('./knex');
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use('/api', router);
 app.set('secretKey', process.env.SECRET_KEY);
 
-
-
-
+// console.log(process.env.BARCHARTS_API_KEY);
+axios.get('https://marketdata.websol.barchart.com/getQuote.json', {
+  params: {
+    apikey: process.env.BARCHARTS_API_KEY,
+    symbols: 'AAPL,GOOG',
+    fields: 'fiftyTwoWkHigh,fiftyTwoWkHighDate,fiftyTwoWkLow,fiftyTwoWkLowDate',
+    mode: 'I',
+    jerq: 'false',
+  }
+})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
 
 
 app.listen(PORT, () => {
