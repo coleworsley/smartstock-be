@@ -10,7 +10,7 @@ exports.getQuotes = (req, res) => {
 
   apiRequest.getQuotes(symbols)
     .then(({data}) => {
-      return res.status(200).json(data)
+      return res.status(200).json(data.results)
     })
     .catch(error => res.status(404).send(error))
 }
